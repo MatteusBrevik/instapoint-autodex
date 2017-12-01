@@ -41,7 +41,11 @@ def run():
         elif line.startswith('MR5*') and len(parts) == 7:
             data['events'].append(parse_event(parts))
 
-    output  = open('output.csv', "w")
+    # Python3
+    #output  = open('output.csv', "w", newline='') 
+    
+    #Python 2.7
+    output  = open('output.csv', "w") 
     writer = csv.writer(output, delimiter=',')
     writer.writerow(['serial', 'datetime', 'event', 'value', 'selection', 'user', 'credits', 'location', 'readout'])
     for key, value in audits.items():
